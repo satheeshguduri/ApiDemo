@@ -28,6 +28,8 @@ dependencies:
   logger: any
   dio: ^3.0.10
   pretty_dio_logger: ^1.1.1
+  bottom_sheet_stateful: ^0.1.1
+
 
 
   # The following adds the Cupertino Icons font to your application.
