@@ -1,36 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:thirdapp/scaffoldbottom.dart';
+import 'package:get/get.dart';
+import 'package:thirdapp/secondscreen.dart';
+import 'package:thirdapp/themefile.dart';
 
 import 'ApiClass.dart';
+import 'databasewidget.dart';
+import 'dbwidget.dart';
 
 void main() {
-  runApp(MyApp());
+
+    runApp(MyApp());
+
+  // runApp(EasyLocalization(child: MyApp(),
+  //   path: "resources/langs",
+  //   saveLocale: true,
+  //   supportedLocales: [
+  //     Locale('en','EN'),
+  //     Locale('te','TE')
+  //   ],
+  // )
+  // );
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: ScaffoldBottomSheet()
-      //MyHomePage(title: 'Flutter Demo Home Page'),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      //
+      // ),
+      themeMode: ThemeMode.system,
+      darkTheme: customDarkTheme(),
+      theme: customTheme(),
+      // localizationsDelegates: context.localizationDelegates,
+      // supportedLocales: context.supportedLocales,
+      // locale: context.locale,
+      home:ApiClass()
+     // MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -79,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('title'), // simply add tr to the string.  here title is the key - value
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -108,6 +117,37 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Text('loan'),
+            RaisedButton(child: Text("Telugu"),
+                onPressed: (){
+              setState(() {
+               // EasyLocalization.of(context).locale = Locale('te','TE');
+              });
+
+            }),
+            RaisedButton(child: Text("English"),
+                onPressed: (){
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondClass()),
+                  );
+                  // setState(() {
+                  //   EasyLocalization.of(context).locale = Locale('en','EN');
+                  // });
+
+                }),
+            RaisedButton(child: Text("Hindi"),
+                onPressed: (){
+                  setState(() {
+                  //  EasyLocalization.of(context).locale = Locale('hi','HI');
+                  });
+
+                }),
+
+            Text("Headline 1",style: Theme.of(context).textTheme.headline1,),
+            Text("Headline 2",style: Theme.of(context).textTheme.headline2,)
+
           ],
         ),
       ),

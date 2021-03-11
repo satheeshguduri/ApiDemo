@@ -14,6 +14,7 @@ import 'employee.dart';
 part 'restclient.g.dart';
 
 @RestApi(baseUrl: "https://jsonplaceholder.typicode.com/")
+// www.google.com/
 abstract class ApiClient {
 
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
@@ -21,6 +22,7 @@ abstract class ApiClient {
    @GET('/posts')
    Future<List<Employee>> getUsers();
 
+   //@POST(login)
    @POST('/posts')
     Future<ResponseModel>  doPost(@Body() RequestModel obj);
 

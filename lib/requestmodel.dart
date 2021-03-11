@@ -11,6 +11,9 @@ class RequestModel{
   String body;
   int userId;
 
+  // String username;
+  //String password;
+
   RequestModel({this.title, this.body, this.userId});
 
   factory RequestModel.fromJson(Map<String, dynamic> json) => _$RequestModelFromJson(json);
